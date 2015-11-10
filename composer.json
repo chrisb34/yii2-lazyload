@@ -21,7 +21,7 @@
       "type": "yii2-extension",    
       "autoload": {
           "psr-4": {
-          "chrisb34\\yii2-lazyload\\": ""
+          "chrisb34\\lazyload\\": ""
           }
       }
 }
