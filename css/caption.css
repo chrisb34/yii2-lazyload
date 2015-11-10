@@ -1,0 +1,42 @@
+#text div.caption {
+	margin: 0 10px 10px 10px;
+	border: 1px solid #ccc;
+	padding: 5px;
+}
+
+#text div.right {margin-right: 0;}
+div.left  { margin-left: 0;}
+
+#text div.caption img {
+	margin: 0;
+	padding:0;
+}
+
+#text div.caption p {
+	margin: 5px 0 0 0;
+	padding: 5px;
+	border-top: 1px #ddd dotted;
+	font-size: .9em;
+}
+
+#sidebar div.caption {
+	margin: 0;
+	padding:0;
+	position: relative;
+}
+
+#sidebar div.caption p {
+	position: absolute;
+	margin: 0; padding: 2px;
+	font-size: .9em;
+	
+	bottom: 0;
+	left: 0;
+	background:black;
+	color: white;
+	opacity: .7;
+}
+
+#sidebar div.caption img {
+	margin: 0; padding: 0;
+}
