@@ -14,7 +14,8 @@
         "homepage": "https://github.com/chrisb34/"
       }
     ],
-      "require": {
+    "minimum-stability": "stable",
+    "require": {
           "yiisoft/yii2": "*"
           },
       "type": "yii2-extension",    
