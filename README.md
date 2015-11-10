@@ -12,12 +12,12 @@ The preferred way to install this extension is through [composer](http://getcomp
 * Either run
 
 ```
-php composer.phar require "chrisb34/lazyload" "*"
+php composer.phar require "chrisb34/yii2-lazyload" "*"
 ```
 or add
 
 ```json
-"chrisb34/lazyload" : "*"
+"chrisb34/yii2-lazyload" : "*"
 ```
 
 
