@@ -3,5 +3,24 @@
     "version": "0.0.1",
     "description": "Lazy Load images and aplly captions",
     "keywords": ["yii2", "images", "lazy", "lazy-loading", "lazy loading", "caption"],
-    "license": "CC-0"
+    "license": "MIT",
+    "support": {
+      "source": "https://github.com/chrisb34/lazyload",
+      "issues": "https://github.com/chrisb34/lazyload/issues"
+    },
+    "authors": [
+      {
+            "name": "chrisb34",
+        "homepage": "https://github.com/chrisb34/"
+      }
+    ],
+      "require": {
+          "yiisoft/yii2": "*"
+          },
+      "type": "yii2-extension",    
+      "autoload": {
+          "psr-4": {
+          "chrisb34\\lazyload\\": ""
+          }
+      }
 }
