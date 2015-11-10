@@ -38,6 +38,7 @@ echo LazyLoad::widget([
 ```
 
 * Thanks to
+
 This uses the jquery plugins:
 
 Lazy Load Plugin for jQuery - Mika Tuupola
