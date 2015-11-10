@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\components;
+namespace chrisb34\lazyload;
 
 use Yii;
 /**

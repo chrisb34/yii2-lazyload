@@ -7,7 +7,7 @@
  * -----------------------------------------------------------------------------
  */
 
-namespace frontend\components;
+namespace chrisb34\lazyload;
 
 use yii\web\AssetBundle;
 use Yii;
