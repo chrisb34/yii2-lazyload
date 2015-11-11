@@ -1,27 +1,31 @@
-Lazy Loading and Caption Markup for Yii2
-========================================
-
+Lazy Load images and apply captions
+===================================
 Yii2 helper to lazy load images and/or to convert image captions into div markups (like wordpress)
 
-* Note: This project is still in DEV and is therefore not fully tested / stable
+*Note: This project is still in DEV and is therefore not fully tested / stable
 
 Installation
 ------------
+
 The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
 
-* Either run
+Either run
 
 ```
-php composer.phar require "chrisb34/yii2-lazyload" "*"
+php composer.phar require --prefer-dist chrisb34/yii2-lazyload "*"
 ```
+
 or add
 
-```json
-"chrisb34/yii2-lazyload" : "*"
+```
+"chrisb34/yii2-lazyload": "*"
 ```
 
+to the require section of your `composer.json` file.
 
-* How to use
+
+Usage
+-----
 
 In a view add the lazyload widget as follows;
 ```php
