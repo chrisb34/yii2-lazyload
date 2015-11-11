@@ -2,9 +2,8 @@
 
 namespace chrisb34\lazyload;
 
-use Yii;
 /**
- * This is the model class for table "content".
+ * Lazyload images and apply captions
  *
  */
 class LazyLoad extends \yii\base\Widget
