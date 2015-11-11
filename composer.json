@@ -1,27 +1,25 @@
 {
     "name": "chrisb34/yii2-lazyload",
-    "version": "0.0.1",
-    "description": "Lazy Load images and apply captions",
-    "keywords": ["yii2", "images", "lazy", "lazy-loading", "lazy loading", "caption"],
+    "description": "Yii2 helper to lazy load images and/or to convert image captions into div markups (like wordpress)",
+    "type": "yii2-extension",
+    "keywords": ["yii2","extension"],
     "license": "MIT",
     "support": {
       "source": "https://github.com/chrisb34/yii2-lazyload",
       "issues": "https://github.com/chrisb34/yii2-lazyload/issues"
     },
     "authors": [
-      {
-            "name": "chrisb34",
-        "homepage": "https://github.com/chrisb34/"
-      }
+        {
+            "name": "Chris Backhouse",
+            "email": "chrisb@sudwebdesign.com"
+        }
     ],
-    "minimum-stability": "stable",
     "require": {
-          "yiisoft/yii2": "*"
-          },
-      "type": "yii2-extension",    
-      "autoload": {
-          "psr-4": {
-          "chrisb34\\lazyload\\": ""
-          }
-      }
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "chrisb34\\lazyload\\": ""
+        }
+    }
 }
