@@ -6,12 +6,9 @@
  * @license http://www.yiiframework.com/license/
  * -----------------------------------------------------------------------------
  */
-
 namespace chrisb34\lazyload;
-
 use yii\web\AssetBundle;
 use Yii;
-
 /**
  * -----------------------------------------------------------------------------
  * @author Chris Backhouse  
@@ -21,17 +18,11 @@ use Yii;
  */
 class LazyLoadAsset extends AssetBundle
 {
-    public $sourcePath = '@bower/jquery-lazyload';
-    public $css = [
-        //'css/site.css',
-    ];
-    public $js = [
-    	'jquery.lazyload.js',
-        //'js/googleapis.js'
-    ];
-    public $depends = [
-        'frontend\assets\AppAsset',
-        'frontend\assets\RobbyBlueAsset',
-    ];
+     public function init()
+    {
+        $this->setSourcePath(__DIR__ );
+        $this->setupAssets('js', ['js/jquery.lazyload.js']);
+        parent::init();
+    }
+    
 }
-
