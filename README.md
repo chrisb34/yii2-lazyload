@@ -40,6 +40,7 @@ echo LazyLoad::widget([
         ... other config options - see source code 
     ]) 
 ```
+see http://yii2.chris-backhouse.com for more details
 
 * Thanks to
 
