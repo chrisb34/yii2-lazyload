@@ -18,15 +18,19 @@ use Yii;
  */
 class LazyLoadAsset2 extends AssetBundle
 {
+    public $depends = [
+            'yii\web\YiiAsset',
+    ];
+    
     public function init()
     {
-        $this->setSourcePath(__DIR__ );
+        $this->sourcePath=__DIR__ . '/assets';
         if (YII_ENV == 'dev')
-            $this->setupAssets('js', ['js/jcaption.js' ]);
+            $this->js = ['js/jcaption.js'];
         else
-            $this->setupAssets('js', ['js/jcaption.min.js' ]);
+            $this->js = ['js/jcaption.min.js' ];
         
-        $this->setupAssets('css', ['css/caption.css' ]);
+        $this->css = ['css/caption.css'];
         
         parent::init();
     }

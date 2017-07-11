@@ -13,9 +13,10 @@
 			requireText: true,
 			copyStyle: false,
 			removeStyle: true,
+			moveClass: true,
 			removeAlign: true,
 			copyAlignmentToClass: false,
-			copyFloatToClass: true,
+			copyFloatToClass: false,
 			autoWidth: true,
 			animate: false,
 			show: {opacity: 'show'},
@@ -27,7 +28,7 @@
 		return $(this).each(function(){
 			//Only add the caption after the image has been loaded.  This makes sure we can know the width of the caption.
 			
-			$(this).bind('load', function(){
+			$(this).one('load', function(){
 				
 				//Make sure the captioning isn't applied twice when the IE fix at the bottom is applied
 				if($(this).data('loaded')) return false;
@@ -48,6 +49,10 @@
 					//Save Image Style
 					var imageStyle = image.attr('style');
 					if(settings.removeStyle) image.removeAttr('style');
+					
+					//Save Image claass
+					var imageClass = image.attr('class');
+					if(settings.removeClass) image.removeClass(imageClass);
 					
 					//Save Image Align
 					var imageAlign = image.attr('align');
@@ -70,6 +75,8 @@
 					//Copy Image Style to Div
 					if(settings.copyStyle) div.attr('style',imageStyle);
 					
+					if(settings.moveClass) div.addClass(imageClass);
+					
 					//If there is an alignment on the image (for example align="left") add "left" as a class on the caption.  This helps deal with older Text Editors like TinyMCE
 					if(settings.copyAlignmentToClass) div.addClass(imageAlign);
 					
@@ -79,6 +86,8 @@
 					//Properly size the caption div based on the loaded image's size
 					if(settings.autoWidth) div.width(image.width());
 				}
+			}).each(function() {
+				  if(this.complete) $(this).load();
 			});
 			
 			// Thanks to Captify for this bit!

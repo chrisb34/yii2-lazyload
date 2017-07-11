@@ -11,6 +11,7 @@ class LazyLoad extends \yii\base\Widget
 
     public $model;
     public $contentProperty;
+    public $content;
     public $fade = true;
     //
     // jcaption Options
@@ -26,13 +27,15 @@ class LazyLoad extends \yii\base\Widget
     //If true; it checks to make sure there is caption copy before running on each image
     public $requireText = true;
     //Should inline style be copied from img element to wrapper
-    public $copyStyle = false;
+    public $copyStyle = true;
+    //Should class be moved from img element to wrapper
+    public $moveClass = true;
     //Strip inline style from image
     public $removeStyle = true;
     //Strip align attribute from image
     public $removeAlign = true;
     //Assign the value of the image's align attribute as a class to the wrapper
-    public $copyAlignmentToClass = false;
+    public $copyAlignmentToClass = true;
     //Assign the value of the image's float value as a class to the wrapper
     public $copyFloatToClass = true;
     //Assign a width to the wrapper that matches the image
@@ -45,6 +48,8 @@ class LazyLoad extends \yii\base\Widget
     //Hide Animation
     public $hide = "{opacity : 'hide'}";
     public $hideDuration = 200	;
+
+    private $bundlePath;
     
     public function init(){
             parent::init();
@@ -54,27 +59,37 @@ class LazyLoad extends \yii\base\Widget
     public function run() {
         $dom = new \DOMDocument;
         $cp = $this->contentProperty;
-        $dom->loadHTML($this->model->$cp);
+        
+        
+
+        if ( empty( $this->content))
+            $this->content = $this->model->$cp;
+        
+        $dom->loadHTML($this->content);
         $images = $dom->getElementsByTagName('img');
         foreach ($images as $image) {
                 $image->setAttribute('data-src', $image->getAttribute('src'));
-                $image->setAttribute('src', '/images/FFFFFF.png');
+                $image->setAttribute('src',$this->bundlePath. '/images/FFFFFF.png');
                 $class = (empty( $image->getAttribute('class'))) ? 'lazy m20' : $image->getAttribute('class') . ' lazy m20';
                 $image->setAttribute('class',  $class);
-                $image->setAttribute('style','background: url(/images/loading.gif) center center no-repeat;');
+                $image->setAttribute('style','background: url('.$this->bundlePath.'/images/loading.gif) center center no-repeat;');
         }
-        Yii::info($dom->saveHTML());
         return $dom->saveHTML();
     }
     
+    public function renderTrueFalse( $value )
+    {
+        return ($value)? 'true' : 'false';
+    }
     /**
      * Registers the asset bundle and locale
      */
     public function registerAssetBundle()
     {
         $view = $this->getView();
-        LazyLoadAsset::register($view);
+        $bundle=LazyLoadAsset::register($view);
         LazyLoadAsset2::register($view);
+        $this->bundlePath = $bundle->baseUrl;
     }
     /**
      * Registers the needed assets
@@ -82,8 +97,11 @@ class LazyLoad extends \yii\base\Widget
     public function registerAssets()
     {
         $this->registerAssetBundle();
-
-        $js = ' 
+    
+        $js = "";
+        /**
+         * 
+         $js = ' 
                 $("img.lazy2").lazyload({
                 '.(($this->fade) ? ' 
                     effect : "fadeIn", ' : '') .
@@ -91,24 +109,25 @@ class LazyLoad extends \yii\base\Widget
                        skip_invisible : true
                 });
             ';
-        
+        **/
         $js .= " 
         $('img.{$this->jcaptionClass}').jcaption({
             wrapperElement	: '".	$this->wrapperElement	."',
             wrapperClass	: '".	$this->wrapperClass	."',
             captionElement	: '".	$this->captionElement	."',
             imageAttr           : '".	$this->imageAttr	."',
-            requireText         : '".	$this->requireText	."',
-            copyStyle           : '".	$this->copyStyle	."',
-            removeStyle         : '".	$this->removeStyle	."',
-            removeAlign         : '".	$this->removeAlign	."',
-            copyAlignmentToClass : '".	$this->copyAlignmentToClass	."',
-            copyFloatToClass	: '".	$this->copyFloatToClass	."',
-            autoWidth           : '".	$this->autoWidth	."',
-            animate             : '".	$this->animate	."',
-            show                :  ".	$this->show	.",
+            requireText         : ".	$this->renderTrueFalse($this->requireText)	.",
+            copyStyle           : ".	$this->renderTrueFalse($this->copyStyle)	.",
+            removeStyle         : ".	$this->renderTrueFalse($this->removeStyle)	.",
+            moveClass           : ".	$this->renderTrueFalse($this->moveClass)	.",
+            removeAlign         : ".	$this->renderTrueFalse($this->removeAlign)	.",
+            copyAlignmentToClass :".	$this->renderTrueFalse($this->copyAlignmentToClass)	.",
+            copyFloatToClass	: ".	$this->renderTrueFalse($this->copyFloatToClass)	.",
+            autoWidth           : ".	$this->renderTrueFalse($this->autoWidth)	.",
+            animate             : ".	$this->renderTrueFalse($this->animate)	.",
+            show                : ".	$this->renderTrueFalse($this->show)	.",
             showDuration	: " .	$this->showDuration	.",
-            hide                :  ".	$this->hide	.",
+            hide                :  ".	$this->renderTrueFalse($this->hide)	.",
             hideDuration	: " .	$this->hideDuration	." 
                 });
         ";

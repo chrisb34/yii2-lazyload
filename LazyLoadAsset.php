@@ -18,10 +18,14 @@ use Yii;
  */
 class LazyLoadAsset extends AssetBundle
 {
-     public function init()
+    public $depends = [
+            'yii\web\YiiAsset',
+    ];
+    
+    public function init()
     {
-        $this->setSourcePath(__DIR__ );
-        $this->setupAssets('js', ['js/jquery.lazyload.js']);
+        $this->sourcePath = __DIR__ . '/assets' ;
+        $this->js = ['js/jquery.lazyload.js'];
         parent::init();
     }
     
