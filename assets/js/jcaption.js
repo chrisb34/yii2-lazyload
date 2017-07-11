@@ -13,8 +13,8 @@
 			requireText: true,
 			copyStyle: false,
 			removeStyle: true,
-			moveClass: true,
 			removeAlign: true,
+			moveClass: true,
 			copyAlignmentToClass: false,
 			copyFloatToClass: false,
 			autoWidth: true,
@@ -52,7 +52,7 @@
 					
 					//Save Image claass
 					var imageClass = image.attr('class');
-					if(settings.removeClass) image.removeClass(imageClass);
+					if(settings.moveClass) image.removeClass(imageClass);
 					
 					//Save Image Align
 					var imageAlign = image.attr('align');
